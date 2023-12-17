@@ -10,9 +10,8 @@ import {
   Input,
   Select,
 } from "@chakra-ui/react";
-import { m, motion } from "framer-motion";
+import { motion } from "framer-motion";
 // import { DatePicker } from "@orange_digital/chakra-datepicker";
-
 // import data and not harcode again
 // These acts as temporary data sources
 import { steps } from "../data/data_info";
@@ -34,6 +33,15 @@ function Homepage() {
   //   return date < today;
   // };
   // let maxDate = new Date().toISOString().substring(0, 10)
+
+  //task is to enforce the minimum date to not go before today remained
+
+  let today = new Date();
+
+  const minDepartureDate = today.toISOString().substring(0, 10);
+  let maxDeparture = today;
+  maxDeparture.setDate(today.getDate() + 30);
+  const maxDepartureDate = maxDeparture.toISOString().substring(0, 10);
   let maxDate = new Date();
   maxDate.setDate(maxDate.getDate() + 30);
   const maximumDate = maxDate.toISOString().substring(0, 10);
@@ -65,7 +73,8 @@ function Homepage() {
             <Input
               type="date"
               value={departureDate}
-              min={departureDate}
+              min={minDepartureDate}
+              max={maxDepartureDate}
               onChange={handleChange}
               placeholder="Departure Date"
             />
@@ -241,7 +250,7 @@ function Homepage() {
           Select your traveling package from us during this holiday moment
         </Text>
         <Box maxW={"50%"} mx={"auto"}>
-          <Select placeholder="Package type with us" >
+          <Select placeholder="Package type with us">
             <Text as={"option"}></Text>
             <option value="option2">Option 2</option>
             <option value="option3">Option 3</option>
