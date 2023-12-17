@@ -9,12 +9,60 @@ import {
   Stack,
   Input,
   Select,
+  useSteps,
+  Stepper,
+  Step,
+  StepIndicator,
+  StepIcon,
+  StepStatus,
+  StepSeparator,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 // import { DatePicker } from "@orange_digital/chakra-datepicker";
 // import data and not harcode again
 // These acts as temporary data sources
 import { steps } from "../data/data_info";
+
+const Steps = () => {
+  const { activeStep, setActiveStep } = useSteps({
+    index: 1,
+    count: steps.length,
+  });
+
+  const activeStepText = steps[activeStep].description;
+  return (
+    <Box width={"75%"} marginX={"auto"} my={20}>
+      <Heading color={"blue"} textAlign={"center"}>
+        Booking Steps
+      </Heading>
+      <hr />
+      <Stepper mt={4}>
+        {steps.map((step, index) => (
+          <Step key={index} gap={0}>
+            <StepIndicator>
+              <StepStatus complete={<StepIcon>1</StepIcon>} />
+            </StepIndicator>
+            <StepSeparator _horizontal={{ ml: 0 }} />
+          </Step>
+        ))}
+      </Stepper>
+      <Text textAlign={"center"} my={3}>
+        Step {activeStep + 1}: <b>{activeStepText}</b>
+      </Text>
+      <Center>
+        <Button
+          onClick={() => {
+            activeStep < steps.length - 1
+              ? setActiveStep(activeStep + 1)
+              : setActiveStep(0);
+          }}
+        >
+          Button
+        </Button>
+      </Center>
+    </Box>
+  );
+};
 
 function Homepage() {
   const [departureDate, setDepartureDate] = useState(
@@ -211,6 +259,7 @@ function Homepage() {
         {/* Add the  */} <hr />
         <Box my={5}>
           <Heading textAlign={"center"}>Booking Progress</Heading>
+          <Steps />
         </Box>
       </Box>
       {/* Seleccting wedding and Luxurius safari carsa */}
@@ -249,16 +298,35 @@ function Homepage() {
         <Text textAlign={"center"}>
           Select your traveling package from us during this holiday moment
         </Text>
+
         <Box maxW={"50%"} mx={"auto"}>
           <Select placeholder="Package type with us">
-            <Text as={"option"}></Text>
+            <option value="option1">Option 1</option>
             <option value="option2">Option 2</option>
             <option value="option3">Option 3</option>
           </Select>
         </Box>
         <Box my={5}>
           <Text textAlign={"center"}>Select Date</Text>
-          <Text textAlign={"center"}>Select Model</Text>
+          <Center>
+            <Input
+              type="date"
+              name="safari-date"
+              w={"50%"}
+              marginX={"auto"}
+              my={"2"}
+            />
+          </Center>
+          <Text textAlign={"center"}>Type a Destination</Text>
+          <Center>
+            <Input
+              type="text"
+              name="car-model"
+              w={"50%"}
+              marginX={"auto"}
+              my={"2"}
+            />
+          </Center>
           <Center>
             <Button
               onPress={() => {
@@ -270,6 +338,27 @@ function Homepage() {
               Check a Package
             </Button>
           </Center>
+        </Box>
+        <Box w={"80%"} marginX={"auto"} my={5}>
+          <Heading textAlign={"center"}>
+            Request a Price Quote for a Safari
+          </Heading>
+          <Input type="text" placeholder="Your Destination" my={2} w={"70%"} />
+          <Input type="text" placeholder="From" my={2} w={"70%"} />
+          <Text>Select your nationality</Text>
+          <radiogroup>
+            <radio>Tanzanian</radio>
+            <radio>Foreign</radio>
+          </radiogroup>
+          <Stack direction={"row"} my={3}>
+            <Text w={"30%"}>Your email</Text>
+            <Input type="mail" w={"70%"} borderColor={"black"} />
+          </Stack>
+          <Stack direction={"row"} my={3}>
+            <Text w={"30%"}>Complete Name</Text>
+            <Input type="mail" w={"70%"} borderColor={"black"} />
+          </Stack>
+          <Button>Submit</Button>
         </Box>
       </Box>
     </>
