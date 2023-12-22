@@ -298,3 +298,57 @@ export default ConsentDialog;
 The key part here is setting the pointerEvents attribute on the ModalOverlay component. By setting it to 'auto' when the modal is open (isOpen is true), it allows pointer events (including scrolling) to pass through the overlay. When the modal is closed (isOpen is false), it sets the pointerEvents to 'none', effectively blocking interaction with the overlay and preventing scrolling.
 
 This way, users can scroll the content behind the overlay while the overlay remains open, and it will only close when they click the "Close" button or take an action to close it explicitly. Adjust the styling and content of the modal according to your design and consent requirements.
+
+
+
+import React, { useRef, useEffect, useState } from 'react';
+import { Box } from '@chakra-ui/react';
+
+
+// sticku=y div after scrolling like in mercedes website and pcspecialist
+
+const YourComponent = () => {
+  const [isSticky, setIsSticky] = useState(false);
+  const stickyDivRef = useRef(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const divOffset = stickyDivRef.current.getBoundingClientRect().top;
+      setIsSticky(divOffset <= 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <>
+      {/* Your Navbar component */}
+      <Navbar />
+
+      {/* Your HeroBox component */}
+      <HeroBox />
+
+      {/* The div you want to stick */}
+      <Box
+        ref={stickyDivRef}
+        position={isSticky ? 'fixed' : 'static'}
+        top={isSticky ? '0' : 'auto'}
+        width="100%"
+        background="white"
+        zIndex={1000} // Ensure it stays above other content
+        boxShadow={isSticky ? '0 4px 6px rgba(0, 0, 0, 0.1)' : 'none'}
+      >
+        {/* Your content within the sticky div */}
+        Sticky Content
+      </Box>
+
+      {/* Rest of your content */}
+    </>
+  );
+};
+
+export default YourComponent;
+
+
+
