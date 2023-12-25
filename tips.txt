@@ -312,11 +312,6 @@ const YourComponent = () => {
   const stickyDivRef = useRef(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const divOffset = stickyDivRef.current.getBoundingClientRect().top;
-      setIsSticky(divOffset <= 0);
-    };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -352,3 +347,115 @@ export default YourComponent;
 
 
 
+
+
+i hit the road a lot of times than i hit my phone
+I only hit my phone when i want to call you
+and we are in peace
+it doesn't happen so often cause to your peace is a metaphor
+and to me having someone around is a dream
+i started feeling ike my life was wasted
+at some point when all i dreamt about was changing who you are to make you
+who i want you to be
+
+
+
+
+const YourComponent = () => {
+  const [isSticky, setIsSticky] = useState(false);
+  const stickyDivRef = useRef(null);
+  const initialOffset = useRef(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const divOffset = stickyDivRef.current.getBoundingClientRect().top;
+      setIsSticky(divOffset <= initialOffset.current);
+    };
+
+    // Set initial offset on mount
+    initialOffset.current = stickyDivRef.current.getBoundingClientRect().top;
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+
+
+stickydev reference
+
+  ref={stickyDivRef}
+        position={isSticky ? 'sticky' : 'static'}
+        top={isSticky ? '0' : 'auto'}
+        width="100%"
+        background="white"
+        zIndex={1000} // Ensure it stays above other content
+        boxShadow={isSticky ? '0 4px 6px rgba(0, 0, 0, 0.1)' : 'none'}
+      >
+
+
+      solution by hooks
+//////////////\
+
+the hook itself
+import { useEffect, useRef, useState } from 'react';
+
+const useSticky = () => {
+  const stickyRef = useRef(null);
+  const [sticky, setSticky] = useState(false);
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    if (!stickyRef.current) {
+      return;
+    }
+    setOffset(stickyRef.current.offsetTop);
+  }, [stickyRef, setOffset]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!stickyRef.current) {
+        return;
+      }
+
+      setSticky(window.scrollY > offset);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [setSticky, stickyRef, offset]);
+  return { stickyRef, sticky };
+};
+
+export default useSticky;
+
+
+
+
+//'//// the sticky class
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+//// ////////
+import classNames from 'classnames';
+import useSticky from './useSticky';
+
+export default function App() {
+  const { sticky, stickyRef } = useSticky();
+  return (
+    <>
+      <header className="header">
+        <h1>Header</h1>
+      </header>
+      <nav ref={stickyRef} className={classNames('nav', { sticky })}>
+        Sticky nav
+      </nav>
+      <div
+        style={{
+          height: sticky ? `${stickyRef.current?.clientHeight}px` : '0px',
+        }}
+      />
+      <main className="content" />
+    </>
+  );
+}
