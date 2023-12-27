@@ -3,3 +3,8 @@
   overflow: -moz-hidden-unscrollable;
   scrollbar-width: 0;
 }
+
+.sticky {
+  position: fixed;
+  top: 0;
+}
