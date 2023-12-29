@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { Heading, Box, Text } from "@chakra-ui/react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box>
+      <Heading>My Document management application: For Redux</Heading>
+      <Text>The following are what we will learn</Text>
+      <hr />
+      <Text>1. Storing user</Text>
+      <Text>2. Storing user configurations</Text>
+      <Text>3. Storing user products and tools across multiple boots</Text>
+      <Text>4. Any advanced redux concept</Text>
+    </Box>
   );
 }
 

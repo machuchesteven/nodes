@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Heading, Box, Text, Stack, Button } from "@chakra-ui/react";
 import "../App.css";
 import { useSticky } from "../utils/hooks";
+import { useScroll, motion } from "framer-motion";
 function Homepage() {
+  const { scrollYProgress } = useScroll();
+  useEffect(() => {
+    console.log(scrollYProgress);
+  }, [scrollYProgress]);
+  console.log(scrollYProgress);
   const { sticky, stickyRef } = useSticky(true);
   return (
     <>
+      <motion.div style={{ scaleX: scrollYProgress }}></motion.div>
       <Box>
         <Text textAlign={"right"}>
           StoreName | Search Icon | CartItems | Cart Price | Buy button
@@ -42,16 +49,23 @@ function Homepage() {
           <Text w={"30%"} my={"auto"}>
             Total: 34, 000/-
           </Text>
-          {sticky ? (
-            <Box w={"20"}>
-              <Button>Pay Now</Button>
-            </Box>
-          ) : (
-            ""
-          )}
+
+          <Box w={"20%"}>
+            <Button>Pay Now</Button>
+          </Box>
+          <Text w="20%">Scroll progress</Text>
         </Stack>
       </Box>
-      <Box w={"80%"} mx={"auto"}>
+      <Box
+        as={motion.div}
+        w={"80%"}
+        mx={"auto"}
+        initial={{ x: -500 }}
+        whileInView={{ x: 0 }}
+        onViewportLeave={{ x: 500 }}
+        viewport={{ once: false }}
+        transition={{ ease: "linear", duration: 2 }}
+      >
         <Heading textAlign={"center"} my={2}>
           Products for You!
         </Heading>
