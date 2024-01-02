@@ -50,6 +50,6 @@ const Island = (props) => {
   );
 };
 
-useGLTF.preload("/island.glb");
+useGLTF.preload(islandScene);
 
 export default Island;

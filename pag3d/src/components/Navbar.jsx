@@ -13,7 +13,7 @@ function Navbar() {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "text-black"
+            isActive ? "text-black" : "text-blue-500"
           }
           activeClassName="bg-blue-500"
           exact
@@ -23,7 +23,7 @@ function Navbar() {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "text-black"
+            isActive ? "text-black" : "text-blue-500"
           }
           activeClassName="bg-blue-500"
           exact
