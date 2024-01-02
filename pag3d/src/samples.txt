@@ -288,3 +288,9 @@ export default {
   },
   plugins: [],
 }
+
+
+
+// npm install @react-spring/three
+the package helps animate the 3D object in the scene
+

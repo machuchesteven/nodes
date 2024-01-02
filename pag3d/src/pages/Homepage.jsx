@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import Loader from "../components/Loader";
+import Island from "../models/island";
 
 function Homepage() {
   return (
@@ -14,6 +15,7 @@ function Homepage() {
           <ambientLight />
           <pointLight />
           <hemisphereLight />
+          <Island />
         </Suspense>
       </Canvas>
     </section>

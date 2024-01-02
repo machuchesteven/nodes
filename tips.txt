@@ -459,3 +459,61 @@ export default function App() {
     </>
   );
 }
+
+
+// 
+<Text
+  bgGradient='linear(to-l, #7928CA, #FF0080)'
+  bgClip='text'
+  fontSize='6xl'
+  fontWeight='extrabold'
+>
+  Welcome to Chakra UI
+</Text>
+
+
+
+
+/// tabs to achieve what vamos wants
+<Tabs isFitted variant='enclosed'>
+  <TabList mb='1em'>
+    <Tab>One</Tab>
+    <Tab>Two</Tab>
+  </TabList>
+  <TabPanels>
+    <TabPanel>
+      <p>one!</p>
+    </TabPanel>
+    <TabPanel>
+      <p>two!</p>
+    </TabPanel>
+  </TabPanels>
+</Tabs>
+
+
+
+
+
+import { Fade, ScaleFade, Slide, SlideFade, Collapse } from '@chakra-ui/react'
+// chakra collapse transition
+function CollapseEx() {
+  const { isOpen, onToggle } = useDisclosure()
+
+  return (
+    <>
+      <Button onClick={onToggle}>Click Me</Button>
+      <Collapse in={isOpen} animateOpacity>
+        <Box
+          p='40px'
+          color='white'
+          mt='4'
+          bg='teal.500'
+          rounded='md'
+          shadow='md'
+        >
+          <Lorem count={1} />
+        </Box>
+      </Collapse>
+    </>
+  )
+}
