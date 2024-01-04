@@ -1,0 +1,288 @@
+// Index.js components
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
+
+
+// Data.js
+export const tests = [
+  { value: "", content: "Choose your test", text: "" },
+  {
+    value: "Test 1",
+    content: "Test 1",
+    text:
+      "Pellentesque leo leo, pretium vitae ultrices a, ornare nec nibh. Integer rutrum risus enim, id lacinia turpis iaculis non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per.",
+    limit: 0
+  },
+  {
+    value: "Test 2",
+    content: "Test 2",
+    text:
+      "Fusce vel enim quis nulla rutrum porttitor et in dolor. Aliquam ut purus ex. In elementum lectus diam. Quisque bibendum erat nec leo volutpat, ac vestibulum nisi malesuada. Donec consectetur accumsan ante et convallis. Fusce posuere urna dui, non ultricies odio pellentesque accumsan. Nulla mattis justo ut convallis porttitor. Duis.",
+    limit: 30
+  }
+];
+
+
+
+///  App.js 
+/** @jsxImportSource @emotion/react */
+import { css, Global } from "@emotion/react";
+import {
+  GrainProvider,
+  Box,
+  Text,
+  Stack,
+  Arrange,
+  Select,
+  Button
+} from "@flodesk/grain";
+import { useState } from "react";
+import { tests } from "./data";
+import TypingGame from "./TypingGame";
+
+const gloablCSS = css`
+  @font-face {
+    font-family: "Flodesk Sans";
+    src: url("/29d1cad7e28417b4-s.p.woff2") format("woff2");
+    font-display: swap;
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Flodesk Sans";
+    src: url("/73a3027a5887a3aa-s.p.woff2") format("woff2");
+    font-display: swap;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .curr-letter {
+    text-decoration: underline;
+  }
+`;
+
+export default function App() {
+  const [test, setTest] = useState(tests[1]);
+  const hasTest = test.value !== "";
+  const { text = "", limit = 0 } = test;
+
+  return (
+    <>
+      <Global styles={gloablCSS} />
+      <GrainProvider>
+        <Box
+          padding="l"
+          className="grn-context"
+          marginX="auto"
+          maxWidth="1000px"
+        >
+          <Stack gap="xl">
+            <Text size="xl" align="center">
+              Flodesk Typing Game
+            </Text>
+            <Arrange justifyContent="center">
+              <Arrange gap="m" borderSide="all" padding="s" radius="m">
+                <Select
+                  options={tests}
+                  value={test.value}
+                  onChange={(option) => setTest(option)}
+                  menuWidth="fit-content"
+                />
+                {hasTest && (
+                  <>
+                    <Button variant="neutral">{text.length} chars</Button>
+                    <Button variant="neutral">
+                      {test.limit ? `${limit} seconds` : "No"} time limit.
+                    </Button>
+                  </>
+                )}
+              </Arrange>
+            </Arrange>
+            {hasTest && <TypingGame text={text} limit={limit} />}
+          </Stack>
+        </Box>
+      </GrainProvider>
+    </>
+  );
+}
+
+
+
+
+/// Typing Game Component
+import React, { useEffect, useState, useRef } from "react";
+import useTypingGame, {
+  CharStateType,
+  PhaseType
+} from "react-typing-game-hook";
+import { Box, Text, Stack, Arrange, Button } from "@flodesk/grain";
+
+const timeFormat = (value) => (value / 1000).toFixed(2);
+const numberFormat = (value) => {
+  if (value < 10) {
+    return `00${value}`;
+  }
+  if (value < 100) {
+    return `0${value}`;
+  }
+  return `${value}`;
+};
+
+const TypingGame = ({ text, limit = 0 }) => {
+  const {
+    states: { charsState, currIndex, correctChar, errorChar, phase },
+    actions: { insertTyping, deleteTyping, endTyping, getDuration }
+  } = useTypingGame(text);
+  const [duration, setDuration] = useState(0);
+
+  const timerRef = useRef();
+  useEffect(() => {
+    timerRef.current = setInterval(() => {
+      if (phase === PhaseType.NotStarted) {
+        setDuration(0);
+      } else if (phase === PhaseType.Started) {
+        const duration = getDuration();
+        setDuration(duration);
+        if (limit > 0 && duration >= limit * 1000) {
+          endTyping();
+          setDuration(limit * 1000);
+        }
+      }
+    }, 100);
+    return () => {
+      clearInterval(timerRef.current);
+    };
+  }, [phase, limit, getDuration, endTyping]);
+
+  const handleKey = (key) => {
+    if (phase === PhaseType.Ended) {
+      return;
+    }
+    if (key === "Enter") {
+      endTyping();
+      return;
+    }
+    if (key === "Backspace") {
+      deleteTyping(false);
+      return;
+    }
+    if (key.length === 1) {
+      insertTyping(key);
+    }
+  };
+
+  return (
+    <Stack gap="m">
+      <Text weight="medium" align="center">
+        Click on the text below and start typing, ENTER to submit.
+      </Text>
+      <Box
+        borderSide="all"
+        padding="m"
+        radius="m"
+        onKeyDown={(e) => {
+          handleKey(e.key);
+          e.preventDefault();
+        }}
+        tabIndex={0}
+      >
+        <Text size="xl">
+          {text.split("").map((char, index) => {
+            let state = charsState[index];
+            let color =
+              state === CharStateType.Incomplete
+                ? "inherit"
+                : state === CharStateType.Correct
+                ? "green"
+                : "red";
+            return (
+              <span
+                key={char + index}
+                style={{ color }}
+                className={currIndex + 1 === index ? "curr-letter" : ""}
+              >
+                {char}
+              </span>
+            );
+          })}
+        </Text>
+      </Box>
+      <Arrange justifyContent="center">
+        <Arrange gap="m" borderSide="all" padding="s" radius="m">
+          <Button variant="accent" style={{ width: "150px" }}>
+            Correct: {numberFormat(correctChar)}
+          </Button>
+          <Button variant="danger" style={{ width: "150px" }}>
+            Error: {numberFormat(errorChar)}
+          </Button>
+          <Button variant="neutral" style={{ width: "150px" }}>
+            Timer: {timeFormat(duration)}s
+          </Button>
+        </Arrange>
+      </Arrange>
+    </Stack>
+  );
+};
+
+export default TypingGame;
+
+
+
+
+
+//package.json
+{
+  "name": "typing-game",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "@emotion/react": "11.10.6",
+    "@emotion/styled": "11.10.6",
+    "@floating-ui/react-dom-interactions": "0.13.3",
+    "@flodesk/grain": "10.0.1",
+    "@headlessui/react": "1.7.13",
+    "loader-utils": "3.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-scripts": "5.0.1",
+    "react-typing-game-hook": "1.4.2"
+  },
+  "devDependencies": {
+    "@babel/runtime": "7.13.8",
+    "typescript": "4.1.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
