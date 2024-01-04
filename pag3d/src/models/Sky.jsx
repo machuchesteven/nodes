@@ -1,10 +1,10 @@
 import { useGLTF } from "@react-three/drei";
 import React from "react";
 import skyObject from "../assets/3d/sky.glb";
-const Sky = () => {
+const Sky = ({ ...props }) => {
   const sky = useGLTF(skyObject);
   return (
-    <mesh>
+    <mesh {...props}>
       <primitive object={sky.scene} />
     </mesh>
   );

@@ -15,8 +15,6 @@ function Navbar() {
           className={({ isActive }) =>
             isActive ? "text-black" : "text-blue-500"
           }
-          activeClassName="bg-blue-500"
-          exact
         >
           About
         </NavLink>
@@ -25,18 +23,14 @@ function Navbar() {
           className={({ isActive }) =>
             isActive ? "text-black" : "text-blue-500"
           }
-          activeClassName="bg-blue-500"
-          exact
         >
           Project
         </NavLink>
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-blue-500" : "text-black"
+            isActive ? "text-black" : "text-blue-500"
           }
-          activeClassName="bg-blue-500"
-          exact
         >
           Contact
         </NavLink>
