@@ -72,7 +72,7 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
       if (Math.abs(rotationSpeed.current) < 0.001) {
         rotationSpeed.current = 0;
       }
-      islandRef.current.rotation.y += rotationSpeed.current
+      islandRef.current.rotation.y += rotationSpeed.current;
     } else {
       const rotation = islandRef.current.rotation.y;
       // the calculations below have a bit to dow with math, for the following
@@ -117,7 +117,14 @@ const Island = ({ isRotating, setIsRotating, setCurrentStage, ...props }) => {
       document.removeEventListener("keyup", handleKeyUp);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [gl, handlePointerUp, handlePointerDown, handlePointerMove]);
+  }, [
+    gl,
+    handlePointerUp,
+    handlePointerDown,
+    handlePointerMove,
+    handleKeyDown,
+    handleKeyUp,
+  ]);
 
   return (
     <a.group ref={islandRef} {...props}>

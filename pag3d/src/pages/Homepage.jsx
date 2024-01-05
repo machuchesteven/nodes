@@ -9,6 +9,7 @@ import {
   adjustPlaneForScreenSize,
 } from "../utils/positioning";
 import Plane from "../models/Plane";
+import HomeInfo from "../components/HomeInfo";
 
 function Homepage() {
   const [currentStage, setCurrentStage] = useState(1);
@@ -18,6 +19,10 @@ function Homepage() {
   const [planeScale, planePosition] = adjustPlaneForScreenSize();
   return (
     <section className="w-full h-screen relative">
+      {/* The popu for the screen to be show on every stage */}
+      <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+        {currentStage && <HomeInfo currentStage={currentStage} />}
+      </div>
       <Canvas
         className={`w-full h-screen bg-transparent ${
           isRotating ? "cursor-grabbing" : "cursor-grab"
@@ -34,7 +39,7 @@ function Homepage() {
             intensity={1}
             groundColor={"#000000"}
           />
-          <Sky />
+          <Sky isRotating={isRotating} />
           <Bird />
           <Plane
             planeScale={planeScale}
