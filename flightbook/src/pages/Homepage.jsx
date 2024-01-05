@@ -67,22 +67,10 @@ const Steps = () => {
 function Homepage() {
   const [departureDate, setDepartureDate] = useState(
     new Date().toISOString().substring(0, 10)
-  ); // Get today's date in YYYY-MM-DD format
-  // const [selectedDate, setSelectedDate] = useState(new Date()); // Initialize with current date
-
+  );
   const handleChange = (event) => {
     setDepartureDate(event.target.value);
   };
-  // const handleDateChange = (date) => {
-  //   setSelectedDate(date);
-  // };
-  // const isPastDate = (date) => {
-  //   const today = new Date();
-  //   return date < today;
-  // };
-  // let maxDate = new Date().toISOString().substring(0, 10)
-
-  //task is to enforce the minimum date to not go before today remained
 
   let today = new Date();
 
@@ -164,95 +152,7 @@ function Homepage() {
           </Stack>
           <Box>
             {/* Open the flights part */}
-            <Stack direction={"row"} my={1}>
-              <Text width={"25%"} mx={5}>
-                Qatar Airways
-              </Text>
-              <Text width={"13%"} mx={3}>
-                {departureDate}
-              </Text>
-              <Text width={"8%"} mx={3} textAlign={"center"}>
-                7h 30m
-              </Text>
-              <Text width={"13%"} mx={3} textAlign={"center"}>
-                Arrival
-              </Text>
-              <Text width={"15%"} mx={5}>
-                Price
-              </Text>
-              <Button colorScheme={"blue"} width={"6%"} size={"sm"}>
-                Book
-              </Button>
-            </Stack>
-            <hr />
-            <Stack direction={"row"} my={1}>
-              <Text width={"25%"} mx={5}>
-                Kenya Airways
-              </Text>
-              <Text width={"13%"} mx={3}>
-                {departureDate}
-              </Text>
-              <Text width={"8%"} mx={3} textAlign={"center"}>
-                Duration
-              </Text>
-              <Text width={"13%"} mx={3} textAlign={"center"}>
-                Arrival
-              </Text>
-              <Text width={"15%"} mx={5}>
-                Price
-              </Text>
-              <Button colorScheme={"blue"} width={"6%"} size={"sm"}>
-                Book
-              </Button>
-            </Stack>
-            <hr />
-            <Stack direction={"row"} my={1}>
-              <Text width={"25%"} mx={5}>
-                Fly Emirates
-              </Text>
-              <Text width={"13%"} mx={3}>
-                {departureDate}
-              </Text>
-              <Text width={"8%"} mx={3} textAlign={"center"}>
-                Duration
-              </Text>
-              <Text width={"13%"} mx={3} textAlign={"center"}>
-                Arrival
-              </Text>
-              <Text width={"15%"} mx={5}>
-                Price
-              </Text>
-              <Button colorScheme={"blue"} width={"6%"} size={"sm"}>
-                Book
-              </Button>
-            </Stack>
-            <hr />
-            <Stack direction={"row"} my={1} onMouseOver={fadeColor()}>
-              <Text width={"25%"} mx={5}>
-                Air Tanzania
-              </Text>
-              <Text width={"13%"} mx={3}>
-                {departureDate}
-              </Text>
-              <Text width={"8%"} mx={3} textAlign={"center"}>
-                Duration
-              </Text>
-              <Text width={"13%"} mx={3} textAlign={"center"}>
-                Arrival
-              </Text>
-              <Text width={"15%"} mx={5}>
-                Price
-              </Text>
-              <Button
-                colorScheme={"blue"}
-                size={"sm"}
-                width={"6%"}
-                as={motion.div}
-                whileTap={{ scale: 0.9 }}
-              >
-                Book
-              </Button>
-            </Stack>
+            
           </Box>{" "}
           {/* Close the flights part */}
         </Box>
@@ -339,27 +239,7 @@ function Homepage() {
             </Button>
           </Center>
         </Box>
-        <Box w={"80%"} marginX={"auto"} my={5}>
-          <Heading textAlign={"center"}>
-            Request a Price Quote for a Safari
-          </Heading>
-          <Input type="text" placeholder="Your Destination" my={2} w={"70%"} />
-          <Input type="text" placeholder="From" my={2} w={"70%"} />
-          <Text>Select your nationality</Text>
-          <radiogroup>
-            <radio>Tanzanian</radio>
-            <radio>Foreign</radio>
-          </radiogroup>
-          <Stack direction={"row"} my={3}>
-            <Text w={"30%"}>Your email</Text>
-            <Input type="mail" w={"70%"} borderColor={"black"} />
-          </Stack>
-          <Stack direction={"row"} my={3}>
-            <Text w={"30%"}>Complete Name</Text>
-            <Input type="mail" w={"70%"} borderColor={"black"} />
-          </Stack>
-          <Button>Submit</Button>
-        </Box>
+        {/* <SafariQuote /> */}
       </Box>
     </>
   );
