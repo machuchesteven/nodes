@@ -5,7 +5,17 @@ const NavHoverBox = ({ ...props }) => {
   return (
     <>
       <Flex></Flex>
-      <Flex h={200} w={200} flexDir={'column'} alignItems={'center'} justify={'center'}></Flex>
+      <Flex
+        h={200}
+        w={200}
+        bg={"green.500"}
+        flexDir={"column"}
+        alignItems={"center"}
+        justify={"center"}
+        borderRadius={"lg"}
+      >
+        
+      </Flex>
     </>
   );
 };
