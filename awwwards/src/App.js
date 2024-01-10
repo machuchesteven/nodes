@@ -1,48 +1,56 @@
 import React from "react";
-import { Box, Heading, Text } from "@chakra-ui/react";
-import Inner from "./components/Inner";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-function App() {
+import ChatbotPage from "./pages/ChatbotPage";
+import HospitalPage from "./pages/HospitalPage";
+import ProfilePage from "./pages/ProfilePage";
+import ModalsPage from "./pages/ModalsPage";
+import HotelPage from "./pages/HotelPage";
+import LoginsPage from "./pages/LoginsPage";
+import RegisterPage from "./pages/RegisterPage";
+import PortfolioPage from "./pages/PortfolioPage";
+import NewsPage from "./pages/NewsPage";
+import AnimationsPage from "./pages/AnimationsPage";
+import BookingPage from "./pages/BookingPage";
+import BettingPage from "./pages/BettingPage";
+import SchoolPage from "./pages/SchoolPage";
+import BlogPage from "./pages/BlogPage";
+import Homepage from "./pages/Homepage";
+import DashboardsPage from "./pages/DashboardsPage";
+import ProductPage from "./pages/ProductPage";
+import Dashboard from "./pages/Dashboard";
+import HorizontalScrollPage from "./pages/HorizontalScrollPage";
+import HerosPage from "./pages/HerosPage";
+
+const App = () => {
   return (
-    <>
-      <Inner>
-        <Box w={"80%"} h={"150vh"} mx={"auto"} bg={"teal.50"}>
-          <Heading textAlign={"center"}>App</Heading>
-          <Text textAlign={"center"} my={2}>
-            Lorem ipsum dolor sit amet, <br />
-            consectetur adipiscing elit. Sed ac risus id libero egestas cursus.{" "}
-            <br />
-            Donec facilisis, velit in interdum pulvinar, erat ex pellentesque
-            quam, a imperdiet massa <br />
-            lorem id diam.
-          </Text>
-          <Heading ml={10}>COntact</Heading>
-          <Text textAlign={"center"} my={2}>
-            Lorem ipsum dolor sit amet, <br />
-            consectetur adipiscing elit. Sed ac risus id libero egestas cursus.{" "}
-            <br />
-            Donec facilisis, velit in interdum pulvinar, erat ex pellentesque
-            quam, a imperdiet massa <br />
-            lorem id diam.
-          </Text>
-          <Text textAlign={"center"} my={2}>
-            Lorem ipsum dolor sit amet, <br />
-            consectetur adipiscing elit. Sed ac risus id libero egestas cursus.{" "}
-            <br />
-            Donec facilisis, velit in interdum pulvinar, erat ex pellentesque
-            quam, a imperdiet massa <br />
-            lorem id diam.
-          </Text>
-        </Box>
-      </Inner>
-      <Box w={"80%"} my={3} h={"100vh"} mx={"auto"} bg={"teal.200"}>
-        <Heading textAlign={"center"}>Page2</Heading>
-      </Box>
-      <Box w={"80%"} my={3} h={"100vh"} mx={"auto"} bg={"teal.100"}>
-        <Heading textAlign={"center"}>Page2</Heading>
-      </Box>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/animations" element={<AnimationsPage />} />
+        <Route path="/bet" element={<BettingPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/book" element={<BookingPage />} />
+        <Route path="/chatbot" element={<ChatbotPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboards" element={<DashboardsPage />} />
+        {/* <Route path="/ecommerce" element={<eCommercePage />} />
+        <Route path="/elearn" element={<eLearnPage />} /> */}
+        <Route path="/heros" element={<HerosPage />} />
+        <Route path="/horizontal-scroll" element={<HorizontalScrollPage />} />
+        <Route path="/hospital" element={<HospitalPage />} />
+        <Route path="/hotel" element={<HotelPage />} />
+        <Route path="/logins" element={<LoginsPage />} />
+        <Route path="/modals" element={<ModalsPage />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/product" element={<ProductPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/school" element={<SchoolPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
