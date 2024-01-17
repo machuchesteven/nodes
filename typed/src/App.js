@@ -1,57 +1,19 @@
-import React, { useState, useEffect, useRef } from "react";
-
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ProfilePage from "./pages/ProfilePage";
+import TypingPage from "./pages/TypingPage";
+import LoginPage from "./pages/LoginPage";
+import ErrorPage from "./pages/ErrorPage";
 const App = () => {
-  const [text, setText] = useState(
-    "The quick brown fox jumps over the lazy dog"
-  );
-  const [typedText, setTypedText] = useState("");
-  const [cursorPosition, setCursorPosition] = useState(0);
-  const textRef = useRef(null);
-
-  useEffect(() => {
-    textRef.current.focus();
-  }, []);
-
-  const handleKeyPress = (e) => {
-    e.preventDefault();
-    const pressedKey = e.key;
-    const currentChar = text[cursorPosition];
-
-    if (pressedKey === currentChar) {
-      setTypedText((prevTypedText) => prevTypedText + currentChar);
-      setCursorPosition((prevCursorPosition) => prevCursorPosition + 1);
-    }
-  };
-
-  const renderText = () => {
-    return text.split("").map((char, index) => {
-      const textColor =
-        index < typedText.length
-          ? char === typedText[index]
-            ? "blue"
-            : "red"
-          : "black";
-      return (
-        <span key={index} style={{ color: textColor }}>
-          {char}
-        </span>
-      );
-    });
-  };
-
   return (
-    <div>
-      <div>{renderText()}</div>
-      <div>
-        <textarea
-          style={{ opacity: 0, height: 0, position: "absolute", top: "-100px" }}
-          ref={textRef}
-          value={typedText}
-          onChange={(e) => setTypedText(e.target.value)}
-          onKeyDown={handleKeyPress}
-        />
-      </div>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<TypingPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   );
 };
 
