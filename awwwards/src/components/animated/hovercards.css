@@ -1,0 +1,9 @@
+.container {
+  align-items: center;
+  justify-content: center;
+}
+
+.container:hover .glass {
+  transform: rotate(0deg) !important;
+  margin: 0 10px !important;
+}

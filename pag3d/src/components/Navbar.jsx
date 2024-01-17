@@ -11,25 +11,25 @@ function Navbar() {
       </NavLink>
       <nav className="flex text-lg gap-7 font-medium">
         <NavLink
-          to="/"
+          to="/about"
           className={({ isActive }) =>
-            isActive ? "text-black" : "text-blue-500"
+            isActive ? "text-blue-500" : "text-black"
           }
         >
           About
         </NavLink>
         <NavLink
-          to="/"
+          to="/projects"
           className={({ isActive }) =>
-            isActive ? "text-black" : "text-blue-500"
+            isActive ? "text-blue-500" : "text-black"
           }
         >
-          Project
+          Projects
         </NavLink>
         <NavLink
-          to="/"
+          to="/contact"
           className={({ isActive }) =>
-            isActive ? "text-black" : "text-blue-500"
+            isActive ? "text-blue-500" : "text-black"
           }
         >
           Contact

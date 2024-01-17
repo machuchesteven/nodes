@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { arrow } from "../assets/icons";
+
 const InfoBox = ({ text, link, btnTxt }) => {
   return (
     <div className="info-box">
       {text}
-      <Link to={link}>{btnTxt}</Link>
+      <Link to={link} className="neo-brutalism-white neo-btn">
+        {btnTxt}
+        <img src={arrow} className="w-4 h-4 object-contain" alt="Arrow" />
+      </Link>
     </div>
   );
 };
@@ -21,6 +26,8 @@ const renderContent = {
       text={
         "Worked with some companies and picked up some skills and Certifications"
       }
+      link={"/about"}
+      btnTxt={"About Me"}
     />
   ),
   3: (
@@ -28,6 +35,8 @@ const renderContent = {
       text={
         "Went to the university of Dar es Salaam, for an engineering degree"
       }
+      link={"/education"}
+      btnTxt={"Education"}
     />
   ),
   4: (
@@ -35,6 +44,8 @@ const renderContent = {
       text={
         "Now, I mostly focus on personal development projects and making the web a better place"
       }
+      link={"/contact"}
+      btnTxt={"Contact Me!"}
     />
   ),
 };

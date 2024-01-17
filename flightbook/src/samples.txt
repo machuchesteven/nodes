@@ -49,3 +49,68 @@ export default YourComponent;
 
 
 
+
+
+
+// dropdown using chakra ui
+// YourDropdown.js
+import { Box, Text, Link, Collapse } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { useState } from 'react';
+
+const YourDropdown = ({ title, links }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <>
+      <Box onClick={handleToggle} cursor="pointer">
+        <Text>{title}</Text>
+        <ChevronDownIcon />
+      </Box>
+      <Collapse in={isOpen}>
+        <Box pl={4}>
+          {links.map((link, index) => (
+            <Link key={index} href={link.url} mt={2}>
+              {link.label}
+            </Link>
+          ))}
+        </Box>
+      </Collapse>
+    </>
+  );
+};
+
+export default YourDropdown;
+
+
+// YourMainFile.js
+import { Box, Text, Link, ChakraProvider } from '@chakra-ui/react';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { useState } from 'react';
+import YourDropdown from './YourDropdown'; // Adjust the path accordingly
+
+const YourComponent = () => {
+  return (
+    <ChakraProvider>
+      <Box>
+        {/* Your sidebar content */}
+        <Link href="#">Home</Link>
+        <YourDropdown
+          title="Demos"
+          links={[
+            { label: 'Demo 1', url: '#' },
+            { label: 'Demo 2', url: '#' },
+            { label: 'Demo 3', url: '#' },
+          ]}
+        />
+        {/* Other sidebar items */}
+      </Box>
+    </ChakraProvider>
+  );
+};
+
+export default YourComponent;

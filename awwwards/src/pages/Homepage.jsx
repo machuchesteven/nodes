@@ -1,8 +1,9 @@
 import React from "react";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text, useColorMode, Button } from "@chakra-ui/react";
 import SiteCard from "../components/homepage/SiteCard";
 
 const Homepage = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box>
       <Box
@@ -17,6 +18,9 @@ const Homepage = () => {
         <Text my={1} textAlign={"center"}>
           Please take a look
         </Text>
+        <Button onClick={toggleColorMode}>
+          Toggle {colorMode === "light" ? "Light" : "Dark"}
+        </Button>
       </Box>
       <Box
         w={["100%", null, "80%"]}
