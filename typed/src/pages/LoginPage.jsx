@@ -2,9 +2,7 @@ import React from "react";
 import {
   Box,
   Heading,
-  Flex,
   Input,
-  Label,
   Button,
   Checkbox,
   Center,

@@ -22,6 +22,8 @@ import Dashboard from "./pages/Dashboard";
 import HorizontalScrollPage from "./pages/HorizontalScrollPage";
 import HerosPage from "./pages/HerosPage";
 import Web3Page from "./pages/Web3Page";
+import RatingPage from "./pages/RatingPage";
+import ChartsPage from "./pages/ChartsPage";
 
 const App = () => {
   return (
@@ -32,10 +34,11 @@ const App = () => {
         <Route path="/bet" element={<BettingPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/book" element={<BookingPage />} />
+        <Route path="/charts" element={<ChartsPage />} />
         <Route path="/chatbot" element={<ChatbotPage />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboards" element={<DashboardsPage />} />
-        {/* <Route path="/ecommerce" element={<eCommercePage />} /> 
+        {/* <Route path="/ecommerce" element={<eCommercePage />} />
         <Route path="/elearn" element={<eLearnPage />} /> */}
         <Route path="/heros" element={<HerosPage />} />
         <Route path="/horizontal-scroll" element={<HorizontalScrollPage />} />
@@ -47,6 +50,7 @@ const App = () => {
         <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="/product" element={<ProductPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/rating" element={<RatingPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/school" element={<SchoolPage />} />
         <Route path="/web3" element={<Web3Page />} />

@@ -64,6 +64,14 @@ const Homepage = () => {
           link={"/chatbot"}
         />
         <SiteCard
+          head={"Charts and Graphs Pages"}
+          description={
+            "Graphs and Charts for Realtime and Presentational Data visualization Applications"
+          }
+          btnText={"View Page"}
+          link={"/charts"}
+        />
+        <SiteCard
           head={"Dashoards Page"}
           description={
             "For management purposes and administration tasks including analytics and data visualizations"
@@ -152,6 +160,12 @@ const Homepage = () => {
           }
           btnText={"View Page"}
           link={"/profile"}
+        />
+        <SiteCard
+          head={"Rating Components UIs"}
+          description={"A rating system for Users and Dashboard admins"}
+          btnText={"View Page"}
+          link={"/rating"}
         />
         <SiteCard
           head={"Registration UIs"}

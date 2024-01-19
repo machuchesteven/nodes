@@ -591,3 +591,4 @@ import {
     </>
   )}
 </Menu>
+0x1E character used with inset unicode for signalr and postman requests

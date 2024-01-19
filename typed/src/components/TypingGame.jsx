@@ -87,7 +87,13 @@ const TypingGame = ({ text, limit = 0 }) => {
         <Box>
           <Heading>
             {isFocused === true ? "Is Focused Now" : "Not Focused"}
-            {phase}
+            {phase === PhaseType.NotStarted
+              ? "Not Started"
+              : phase === PhaseType.Started
+              ? "Started"
+              : phase === PhaseType.Ended
+              ? "Ended"
+              : "Unknown"}
           </Heading>
         </Box>
       </Box>

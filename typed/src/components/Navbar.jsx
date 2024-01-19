@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Box, Flex, Text } from "@chakra-ui/react";
+import { Heading, Flex, Text } from "@chakra-ui/react";
 import { profile_data } from "../data/profile";
 function Navbar() {
   return (
