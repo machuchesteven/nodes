@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Heading,
@@ -9,6 +9,7 @@ import {
   Divider,
   Icon,
   SimpleGrid,
+  Tag,
 } from "@chakra-ui/react";
 import {
   FaArrowRight,
@@ -16,9 +17,10 @@ import {
   FaLinkedin,
   FaSquareXTwitter,
   FaSquareDribbble,
+  FaHeart,
 } from "react-icons/fa6";
 import { BsQuote } from "react-icons/bs";
-const PortfolioPage = () => {
+const GlassMorphicPortfolio = () => {
   return (
     <Box>
       <Heading>Portfolios</Heading>
@@ -390,5 +392,99 @@ const PortfolioPage = () => {
     </Box>
   );
 };
+// the actual page implementation is the one above
+const PortfolioPage = () => {
+  const [liked, setLiked] = useState(false);
+  return (
+    <>
+      <Box bg={"black"} minH={"100vh"} color={"whitesmoke"}>
+        <Heading textAlign={"center"} my={5}>
+          Glassmorphic Texture
+        </Heading>
+        <Box width={["96%", null, "75%", "60%"]} mx={"auto"}>
+          <SimpleGrid columns={[2, null, 3]} gap={[2, null, 5]}>
+            <Box
+              align="center"
+              bg={"rgba(0, 255, 255, 0.1)"}
+              backdropFilter={"blur(5px)"}
+              p={{ base: 2, md: 5 }}
+              borderRadius={3}
+              borderWidth={1}
+              borderColor={"rgba(255, 255, 255, 0.8)"}
+            >
+              <Flex flexDir={"row"} justify={"space-between"}>
+                <Tag bg="red" color={"white"} px={2}>
+                  -8%
+                </Tag>
+                <FaHeart color={liked ? "red" : "white"} />
+              </Flex>
+              <Heading size={"md"}>Monthly Flow</Heading>
+              <Text my={2}>
+                Flexible & unlimited access to thousands of materials to design
+                services that talk to hearts
+              </Text>
+              <Heading mt={5} size={"lg"}>
+                $5,000/m
+              </Heading>
+              <Button
+                w={"80%"}
+                onClick={() => setLiked(!liked)}
+                bg={"rgba(0, 255, 255, 0.5)"}
+                mx={"auto"}
+              >
+                Get Started
+              </Button>
+            </Box>
+            <Box
+              bg={"rgba(255, 255, 255, 0.4)"}
+              backdropFilter={"blur(10px)"}
+              p={{ base: 2, md: 5 }}
+              borderRadius={3}
+              borderWidth={1}
+              borderColor={"rgba(255, 255, 255, 0.8)"}
+            >
+              <Heading size={"md"}>Monthly Flow</Heading>
+              <Text my={2}>
+                Flexible & unlimited access to thousands of materials to design
+                services that talk to hearts
+              </Text>
+              <Heading mt={5} size={"lg"}>
+                $5,000/m
+              </Heading>
+              <Button w={"80%"} mx={"auto"}>
+                Get Started
+              </Button>
+            </Box>
+            <Box
+              bg={"rgba(255, 255, 255, 0.2)"}
+              backdropFilter={"blur(10px)"}
+              p={{ base: 2, md: 5 }}
+              borderRadius={5}
+              borderWidth={1}
+              borderColor={"rgba(255, 255, 255, 0.8)"}
+            >
+              <Heading size={"md"}>Monthly Flow</Heading>
+              <Text my={2}>
+                Flexible & unlimited access to thousands of materials to design
+                services that talk to hearts
+              </Text>
+              <Heading mt={5} size={"lg"}>
+                $5,000/m
+              </Heading>
+              <Button w={"80%"} mx={"auto"}>
+                Get Started
+              </Button>
+            </Box>
+          </SimpleGrid>
+        </Box>
+      </Box>
+    </>
+  );
+};
 
+// bg={"rgba(255, 255, 255, 0.4)"}
+//           px={{ base: null, md: 10 }}
+//           spacing={{ base: "2", lg: "5" }}
+//           display={{ base: "none", md: "flex" }}
+//           backdropFilter={"blur(10px)"}
 export default PortfolioPage;

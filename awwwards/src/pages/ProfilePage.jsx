@@ -13,6 +13,7 @@ import {
   Avatar,
   Stack,
 } from "@chakra-ui/react";
+import { Chrono } from "react-chrono";
 
 const ProfilePage = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -68,14 +69,14 @@ const ProfilePage = () => {
               <TabPanel>
                 <p>two!</p>
                 <Text>{tabIndex}</Text>
-                <Text>
-                  Create React Charts using a React Chart component for
-                  ApexCharts. Build beautiful and interactive visualizations in
-                  your react applications.
-                </Text>
+                <Heading size={"md"}>Education</Heading>
+                <Text>This is my educational journey</Text>
+                <Box w={"5xl"} mx={"auto"}>
+                  <Chrono items={""} />
+                </Box>
               </TabPanel>
               <TabPanel>
-                <p>two!</p>
+                <p>Awards: 3!</p>
                 <Text>{tabIndex}</Text>
               </TabPanel>
             </TabPanels>
@@ -85,9 +86,7 @@ const ProfilePage = () => {
       <Box h={100}>
         <Text textAlign={"center"}>Typed Profile Page</Text>
       </Box>
-      <Box>
-        
-      </Box>
+      <Box></Box>
     </Box>
   );
 };
