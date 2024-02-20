@@ -15,11 +15,12 @@ function App(): React.ReactNode {
   }, [count]);
   return (
     <>
-      <h1>Welcome to the Vite App</h1>
+      <h1 className="text-xl underline">Welcome to the Vite App</h1>
       <button onClick={() => setCount(count + 1)}>Increment Count</button>
       <p>The count is {count}</p>
       <button onClick={() => setCount(0)}>Reset Count</button>
       <p>{storedNum}</p>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
     </>
   );
 }
