@@ -1,13 +1,12 @@
 import React from "react";
-import { Heading, Flex, Text } from "@chakra-ui/react";
+import { Heading, Flex, Text, Icon } from "@chakra-ui/react";
 import { profile_data } from "../data/profile";
+import { MdSettings } from "react-icons/md";
 function Navbar() {
   return (
     <>
       <Flex flexDir={"row"}>
-        <Heading>Navbar</Heading>
-        <Text>Navbar Menu</Text>
-        <Text>Customization</Text>
+        <Icon Icon={MdSettings} />
         <Text>{profile_data.streak}</Text>
       </Flex>
     </>

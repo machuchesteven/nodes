@@ -61,7 +61,12 @@ const TypingGame = ({ text, limit = 0 }) => {
                   ? "green"
                   : "red";
               return (
-                <Text as={"span"} key={char + index} color={color}>
+                <Text
+                  style={{ fontWeight: "bold" }}
+                  as={"span"}
+                  key={char + index}
+                  color={color}
+                >
                   {char}
                 </Text>
               );

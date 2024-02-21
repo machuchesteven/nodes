@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Heading, Input, Button } from "@chakra-ui/react";
 import Profile from "../components/Profile";
 import Login from "../components/Login";
 import ChangeColor from "../components/ChangeColor";
 import { useSelector, useDispatch } from "react-redux";
 import ToppingItem from "../components/ToppingItem";
-import { useState } from "react";
 import { addTopping } from "../utils/toppings";
 
 function ProfilePage() {
@@ -19,7 +18,7 @@ function ProfilePage() {
         <Heading>Profile Page</Heading>
         <Login />
         <Profile />
-        <ChangeColor />
+        <ChangeColor /> 
         {toppings.map((topping, index) => (
           <Box key={index}>
             <ToppingItem name={topping} />
