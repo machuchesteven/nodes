@@ -1,6 +1,8 @@
 import React from "react";
-import { useToast } from "@chakra-ui/react";
+// import { useToast } from "@chakra-ui/react";
+
 import Hero from "../components/Hero";
+import FeaturesSection from "../components/FeaturesSection";
 const Homepage = () => {
   // const toast = useToast();
   // toast({
@@ -14,6 +16,7 @@ const Homepage = () => {
   return (
     <>
       <Hero />
+      <FeaturesSection />
     </>
   );
 };
