@@ -13,9 +13,6 @@ const TypingGame = ({ text, limit = 0 }) => {
   return (
     <>
       <Box w={["96%", "88%", "70%", "65%"]} mx={"auto"}>
-        <Heading my={3} textAlign={"center"}>
-          Welcome to TypeIQ
-        </Heading>
         {!isFocused && (
           <Text my={3} textAlign={"center"}>
             Click the box below and start typing!
@@ -90,7 +87,7 @@ const TypingGame = ({ text, limit = 0 }) => {
           </Box>
         </Stack>
         <Box>
-          <Heading>
+          <Text as={"b"}>
             {isFocused === true ? "Is Focused Now" : "Not Focused"}
             {phase === PhaseType.NotStarted
               ? "Not Started"
@@ -99,7 +96,7 @@ const TypingGame = ({ text, limit = 0 }) => {
               : phase === PhaseType.Ended
               ? "Ended"
               : "Unknown"}
-          </Heading>
+          </Text>
         </Box>
       </Box>
     </>

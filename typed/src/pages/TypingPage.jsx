@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { tests } from "../data/tests";
 import TypingGame from "../components/TypingGame";
 import { Box, Heading } from "@chakra-ui/react";
-
+import Footer from "../components/Footer";
 const TypingPage = () => {
   const [test, setTest] = useState(tests[1]);
   const hasTest = test.value !== "";
@@ -10,10 +10,10 @@ const TypingPage = () => {
   return (
     <>
       <Box>
-        {hasTest && <TypingGame text={text} limit={limit} />}
-        <Heading textAlign={"center"} mt={5} mb={2}>
-          Other Features
+        <Heading my={3} textAlign={"center"}>
+          Welcome to TypeIQ
         </Heading>
+        {hasTest && <TypingGame text={text} limit={limit} />}
         <hr />
       </Box>
     </>

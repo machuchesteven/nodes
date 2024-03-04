@@ -3,10 +3,8 @@ import {
   Box,
   Heading,
   Text,
-  Button,
   Flex,
   SimpleGrid,
-  Icon,
 } from "@chakra-ui/react";
 const Leaderboard = () => {
   return (
