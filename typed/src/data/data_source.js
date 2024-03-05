@@ -32,6 +32,11 @@ const pricing = [
     description:
       "Typed offers you a premium plan to access advanced features and improve your typing speed and accuracy.",
   },
+  {
+    title: "Enterprise",
+    description:
+      "Enterprise offer for its stuff members or adding it as part of their project ",
+  },
 ];
 
 const prizes_types = [
@@ -135,7 +140,6 @@ const challenges = [
     completion: 0,
     rated: "hard",
   },
-
 ];
 
 const data_source = {
@@ -147,8 +151,5 @@ const data_source = {
   prizes: prizes_types,
   winners: current_winners,
 };
-
-
-
 
 export { data_source, challenges };
