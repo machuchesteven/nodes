@@ -21,6 +21,11 @@ const matchTagColor = (rated) => {
   return "red";
 };
 
+/**
+ * Returns an Icon based on the Rating standard used
+ * These icons are predefined by the UI / UX team for the lookup
+ * @rated {string}
+ */
 const matchTagIcon = (rated) => {
   if (rated === "easy") {
     return FaLaughSquint;

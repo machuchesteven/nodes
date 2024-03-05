@@ -3,6 +3,8 @@ import React from "react";
 
 import Hero from "../components/Hero";
 import FeaturesSection from "../components/FeaturesSection";
+import PricingSection from "../components/PricingSection";
+
 const Homepage = () => {
   // const toast = useToast();
   // toast({
@@ -17,6 +19,7 @@ const Homepage = () => {
     <>
       <Hero />
       <FeaturesSection />
+      <PricingSection />
     </>
   );
 };
