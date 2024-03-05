@@ -29,6 +29,7 @@ function App(): React.ReactNode {
         >
           Count
         </button>
+        <h1>Stored Num is {storedNum}</h1>
       </div>
     </div>
   );
