@@ -1,8 +1,9 @@
 import React from "react";
-import { Heading, Text, Flex } from "@chakra-ui/react";
+import { Heading, Text, Flex, Divider } from "@chakra-ui/react";
 const Footer = () => {
   return (
     <>
+      <Divider my={2} />
       <Flex w={"70%"} mx={"auto"} my={3} justify={"space-between"}>
         <Flex flexDir={"column"}>
           <Heading mb={2} size={"md"}>

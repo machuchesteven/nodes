@@ -98,6 +98,46 @@ const current_winners = [
   },
 ];
 
+const challenges = [
+  {
+    title: "Alphabets",
+    description: "Learning Typing of english alphabets from A to Z",
+    completion: 47,
+    rated: "easy",
+  },
+  {
+    title: "Words",
+    description: "Learning Typing of english words",
+    completion: 32,
+    rated: "medium",
+  },
+  {
+    title: "Sentences",
+    description: "Learning Typing of english sentences",
+    completion: 15,
+    rated: "hard",
+  },
+  {
+    title: "Paragraphs",
+    description: "Learning Typing of english paragraphs",
+    completion: 5,
+    rated: "hard",
+  },
+  {
+    title: "Programming",
+    description: "Learning Typing of programming languages",
+    completion: 2,
+    rated: "hard",
+  },
+  {
+    title: "Shorthand",
+    description: "Learning Typing of shorthand",
+    completion: 0,
+    rated: "hard",
+  },
+
+];
+
 const data_source = {
   headline: "Welcome to Typed",
   subheadline:
@@ -108,4 +148,4 @@ const data_source = {
   winners: current_winners,
 };
 
-export { data_source };
+export { data_source, challenges };

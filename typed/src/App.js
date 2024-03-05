@@ -6,6 +6,7 @@ import LoginPage from "./pages/LoginPage";
 import ErrorPage from "./pages/ErrorPage";
 import Homepage from "./pages/Homepage";
 import Leaderboard from "./pages/Leaderboard";
+import ChallengesPage from "./pages/ChallengesPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/challenges" element={<ChallengesPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
       <Footer />
