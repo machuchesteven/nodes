@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 
 // import Pages
 import Homepage from "./pages/Homepage.tsx";
+import ProfilePage from "./pages/ProfilePage.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/app" element={<App />} />
+        <Route path="profile" element={<ProfilePage />} />
       </Routes>
       <Footer />
     </Router>
