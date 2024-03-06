@@ -12,7 +12,7 @@ const Sidebar = (): React.ReactNode => {
   );
 };
 
-const SidebarIcon = ({ icon, text = "tooltip" }): React.ReactNode => (
+const SidebarIcon = ({ icon , text = "tooltip" }): React.ReactNode => (
   <div className="Sidebar-icon group my-2">
     {icon}
     <span className="Sidebar-tooltip group-hover:scale-100">{text}</span>

@@ -4,7 +4,7 @@ const TimelineComponent: React.FC = () => {
   return (
     <div className="relative">
       <div className="dot" title="current event">
-        <div className="dot absolute -top-1 -left-1 hover:animate-ping"></div>
+        <div className="dot absolute -top-1 -left-1 group-hover:animate-ping"></div>
       </div>
       <div className="pl-10">
         <span className="timeline-date">13 NOVEMBER 2021</span>
