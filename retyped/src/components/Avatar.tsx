@@ -1,7 +1,7 @@
 import React from "react";
 
 const Avatar: React.FC = () => {
-  return <div>Avatar</div>;
+  return <div className="avatar">Avatar</div>;
 };
 
 export default Avatar;
