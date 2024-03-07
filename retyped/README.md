@@ -8,6 +8,11 @@ The aim is just to master tailwind with Typescript.
 
 More complexity will be added to the site as we go.
 
+## Purpose
+
+This collects a list of components and add them to the learning site
+also it helps me build a components library for reference
+
 ## License
 
 MIT License
