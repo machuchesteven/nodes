@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const LawFirmPage: React.FC = () => {
   return (
     <>
@@ -32,9 +32,13 @@ const LawFirmPage: React.FC = () => {
                   Bridge the gap between lawyers and cases seamlessly. Your
                   gateway to legal connections and case solutions.
                 </p>
+
                 <button type="button" className="alternative-btn">
                   Request Legal Aid
                 </button>
+                <Link to={"/lawyer"} className="alternative-btn">
+                  Lawyers Profiles
+                </Link>
               </div>
             </div>
           </div>
@@ -44,7 +48,6 @@ const LawFirmPage: React.FC = () => {
       <hr />
       <div className="container px-5">
         <div className="container -mt-10 rounded-lg bg-neutral-950 text-neutral-200 p-5">
-          
           <div className="grid grid-cols-4 gap-2 py-3">
             <div className="flex flex-row">
               <h2 className="text-xl text-center w-[95%]">
@@ -76,7 +79,6 @@ const LawFirmPage: React.FC = () => {
                 <br />
                 Cases
               </h2>
-             
             </div>
           </div>
         </div>

@@ -7,9 +7,15 @@ const Homepage: React.FC = () => {
       <RespSidebar />
       <div>
         <h1>The body of the Homepage on the right</h1>
-        <button className="mx-2 p-1 border rounded border-gray-800  " title="profile">
-          <Link to={"profile"}>Go To Profile</Link>
-        </button>
+        <div className="flex flex-row">
+          <Link to={"profile"} className="alternative-btn">
+            Go To Profile
+          </Link>
+
+          <Link to={"law"} className="alternative-btn">
+            Law Firm Page
+          </Link>
+        </div>
       </div>
     </div>
   );

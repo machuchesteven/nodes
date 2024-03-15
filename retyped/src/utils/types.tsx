@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 /**
  * Returns the type of Items for the given variable
  */
@@ -16,3 +18,10 @@ export type MenuItemWithSubmenuProps = {
   item: SideNavItem;
   toggleOpen: () => void;
 };
+
+export interface EducationCardProps {
+  tagText?: string;
+  header: string;
+  date: string;
+  icon?: ReactNode;
+}
