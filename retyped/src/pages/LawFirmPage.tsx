@@ -1,26 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavbarSection from "../components/lawyers/NavbarSection";
+import PricingSection from "../components/lawyers/PricingSection";
 const LawFirmPage: React.FC = () => {
   return (
     <>
+      <NavbarSection />
       <div className="container">
-        <div className="navbar">
-          <nav
-            className="flex flex-row justify-between align-middle my-2"
-            role="navigation"
-          >
-            <div className="text-lg font-bold my-auto">Logo</div>
-            <div className="flex flex-row align-middle my-auto justify-evenly gap-3">
-              <a href="#">Home</a>
-              <a href="#">About</a>
-              <a href="#">Services</a>
-              <a href="#">Contact</a>
-            </div>
-            <button className="rounded border-sm shadow-sm px-2 py-2">
-              Log In
-            </button>
-          </nav>
-        </div>
         <div className="flex h-[75vh] w-full">
           <div className="my-auto">
             <div className="hero align-middle my-auto">
@@ -83,6 +69,7 @@ const LawFirmPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <PricingSection />
     </>
   );
 };

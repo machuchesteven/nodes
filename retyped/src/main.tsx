@@ -13,6 +13,7 @@ import Homepage from "./pages/Homepage.tsx";
 import ProfilePage from "./pages/ProfilePage.tsx";
 import LawFirmPage from "./pages/LawFirmPage.tsx";
 import LawyerPage from "./pages/LawyerPage.tsx";
+import LoginPage from "./pages/LoginPage.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
         <Route path="/law" element={<LawFirmPage />} />
         <Route path="/lawyer" element={<LawyerPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </Router>
   </React.StrictMode>
