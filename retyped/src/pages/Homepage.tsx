@@ -15,6 +15,9 @@ const Homepage: React.FC = () => {
           <Link to={"law"} className="alternative-btn">
             Law Firm Page
           </Link>
+          <Link to={"receipt"} className="alternative-btn">
+            Create Receipts
+          </Link>
         </div>
       </div>
     </div>

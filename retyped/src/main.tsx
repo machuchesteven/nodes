@@ -14,6 +14,7 @@ import ProfilePage from "./pages/ProfilePage.tsx";
 import LawFirmPage from "./pages/LawFirmPage.tsx";
 import LawyerPage from "./pages/LawyerPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
+import ReceiptPage from "./pages/ReceiptPage.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -22,7 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/" element={<Homepage />} />
         <Route path="/app" element={<App />} />
         <Route path="profile" element={<ProfilePage />} />
-
+        <Route path="/receipt" element={<ReceiptPage />} />
         <Route path="/law" element={<LawFirmPage />} />
         <Route path="/lawyer" element={<LawyerPage />} />
         <Route path="/login" element={<LoginPage />} />
