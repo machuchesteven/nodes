@@ -25,3 +25,11 @@ export interface EducationCardProps {
   date: string;
   icon?: ReactNode;
 }
+
+export type Message = {
+  message: string;
+};
+
+export type MessageList = {
+  messageList: string[];
+};
